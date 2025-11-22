@@ -1,9 +1,14 @@
+ window-rule {
+    match  app-id=".*"
+    opacity 0.85
+}
+spawn-sh-at-startup  "waybar --config .config/waybar/top/config.jsonc &"
 spawn-at-startup "/usr/bin/swww-daemon"
-spawn-at-startup "swww" "img" "~/home/uxtk/壁纸/dpkk.png"
-spawn-sh-at-startup "swaybg -i  /home/uxtk/壁纸/53.jpg -m fill"
+spawn-at-startup "swww" "img" "~/home/uxtk/壁纸/22.jpg"
+spawn-sh-at-startup "swaybg -i  /home/uxtk/壁纸/22.jpg -m fill"
     prefer-no-csd
 cursor {
-    xcursor-size 30
+    xcursor-size 20
     hide-when-typing
 }
  input {
@@ -20,9 +25,9 @@ cursor {
 }
 /-output "eDP-1" {
     mode "1920x1080@120.030"
-    scale 2
+    scale 1.5
     transform "normal"
-    position x=1280 y=0
+   position x=1280 y=0
 }
 
 layout {
@@ -135,12 +140,39 @@ window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
 }
+/-window-rule {
+    match app-id=".*"
+
+    opacity 0.7
+}
+window-rule {
+    match app-id=r#"^com\.obsproject\.Studio$"#
+
+    min-width 876
+}
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+window-rule {
+    // 通过 "dropdown" 应用 ID 匹配。
+    // 你需要在运行终端时设置此应用 ID，例如：
+    // spawn "alacritty" "--class" "dropdown"
+    match app-id="^dropdown$"
+
+    open-floating true
+    // 锚定到屏幕的上边缘。
+    default-floating-position x=0 y=0 relative-to="top"
+    // 屏幕高度的一半。
+    default-window-height { proportion 0.5; }
+    // 屏幕宽度的 80%。
+    default-column-width { proportion 0.8; }
+}
 
 window-rule {
     match app-id=r#"wechat"#
     open-focused false//解决搜索框失去焦点问题
 }
-
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
@@ -148,13 +180,16 @@ binds {
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+Shift+C hotkey-overlay-title="重启waybar" { spawn-sh "pkill waybar && waybar"; }
-
+ Mod+Shift+B hotkey-overlay-title="重启waybartop" { spawn-sh  " waybar --config .config/waybar/top/config.jsonc &"; }
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+   // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+   // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+XF86MonBrightnessUp     allow-when-locked=true { spawn "light" "-A" "10"; }
+XF86MonBrightnessDown   allow-when-locked=true { spawn "light" "-U" "10"; }
+
 
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
@@ -287,6 +322,22 @@ binds {
     Ctrl+Alt+Delete { quit; }
 
     Mod+Shift+P { power-off-monitors; }
+
+
+}
+
+environment {
+    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    XDG_MENU_PREFIX "arch-"
+    QT_IM_MODULE "fcitx"
+    XMODIFIERS "@im=fcitx"
+    GTK_IM_MODULE "fcitx"
+    SDL_IM_MODULE "fcitx"
+    XDG_SESSION_TYPE "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+    SDL_VIDEODRIVER "wayland,x11"
+    GODEBUG "netdns=go"
 }
 
 layer-rule {
@@ -297,4 +348,20 @@ layer-rule {
 layer-rule {
     match namespace="^quickshell-overview$"
     place-within-backdrop true
+}
+layer-rule {
+    match namespace="^launcher$"
+
+    shadow {
+        on
+    }
+
+    // Fuzzel 默认设置为 10 像素圆角。
+    geometry-corner-radius 20
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }

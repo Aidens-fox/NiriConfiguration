@@ -8,10 +8,8 @@
     // Choose the order of the modules
     "modules-left": [
 "custom/os_button",
-  "niri/workspaces",
-        "niri/mode",
-        "niri/scratchpad",
-        "custom/media"
+"disk",
+ "niri/workspaces",
     ],
     "modules-center": [
 "niri/window",
@@ -22,7 +20,7 @@
         "power-profiles-daemon",
         "cpu",
         "memory",
-//        "temperature",
+        "temperature",
         "backlight",
         "keyboard-state",
         "battery",
@@ -38,7 +36,7 @@
 			"format": " 󰋊   {percentage_free}%",
 	},
 "custom/os_button": {
-        "format": "  󰏖  ",
+        "format": " ",
         "on-click": "rofi -show drun  -show-icons -theme .config/rofi/themes/launchpad.rasi",
         "tooltip": false
     },
@@ -54,22 +52,31 @@
         "max-length": 24
     },
 
-  // "niri/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+"niri/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "default": "",
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "active": "󱓻",
+            "urgent": "󱓻"
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+ 	    "3": [],
+            "4": [],
+            "5": []
+        }
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -80,12 +87,12 @@
         }
     },
     "niri/mode": {
-        "format": "<span style=\"italic\">  {}</span>"
+        "format": "<span style=\"italic\"> {}</span>"
     },
     "niri/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": [" ", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
