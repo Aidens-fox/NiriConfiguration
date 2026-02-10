@@ -1,0 +1,18 @@
+anchor=bottom-left
+default-timeout=4000
+
+icons=1
+icon-path=/usr/share/icons/Paper-Mono-Dark/
+icon-location=left
+
+# Format
+
+margin=20,20
+padding=20,10
+border-size=2
+border-radius=1
+
+font=Cantarell 10
+background-color=#282828
+border-color=#448488
+text-color=#ebdbb2

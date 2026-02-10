@@ -2,17 +2,18 @@
 {
     // "layer": "top", // Waybar at top layer
      "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 20, // Waybar height (to be removed for auto height)
+    "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-"custom/os_button",
-"disk",
- "niri/workspaces",
+        "niri/workspaces",
+        "niri/mode",
+        "niri/scratchpad",
+        "custom/media"
     ],
     "modules-center": [
-"niri/window",
+        "niri/window"
     ],
     "modules-right": [
         "pulseaudio",
@@ -22,61 +23,28 @@
         "memory",
         "temperature",
         "backlight",
-        "keyboard-state",
         "battery",
         "battery#bat2",
         "clock",
         "tray",
-	"custom/powewe"
     ],
     // Modules configuration
-
-
-"disk":{
-			"format": " 󰋊   {percentage_free}%",
-	},
-"custom/os_button": {
-        "format": " ",
-        "on-click": "rofi -show drun  -show-icons -theme .config/rofi/themes/launchpad.rasi",
-        "tooltip": false
-    },
-
- "custom/powewe": {
-        "format" : " ⏻ ",
-                "tooltip": false,
-	"on-click": "nwg-bar",    
-},
-
- "niri/window": {
-        "format": "{}",
-        "max-length": 24
-    },
-
-"niri/workspaces": {
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "default": "",
-            "1": "1",
-            "2": "2",
-            "3": "3",
-            "4": "4",
-            "5": "5",
-            "6": "6",
-            "7": "7",
-            "8": "8",
-            "9": "9",
-            "active": "󱓻",
-            "urgent": "󱓻"
-        },
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
- 	    "3": [],
-            "4": [],
-            "5": []
-        }
-    },
+    // "niri/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -87,14 +55,47 @@
         }
     },
     "niri/mode": {
-        "format": "<span style=\"italic\"> {}</span>"
+        "format": "<span style=\"italic\">{}</span>"
     },
     "niri/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": [" ", ""],
+        "format-icons": ["", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "tray": {
         // "icon-size": 21,
@@ -104,30 +105,18 @@
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
-"clock": {
-    "format": "  {:%Y-%m-%d 󰅐 %H:%M:%S}",
-        "tooltip-format": "<span>{calendar}</span>",
-        "rotate": 0,
-        "interval": 1,
-                "calendar": {
-                        "mode": "month",
-                        "format": {
-                            "months": "<span color='#ff6699'><b>{}</b></span>",
-                        "days": "<span color='#cdd6f4'><b>{}</b></span>",
-                            "weekdays": "<span color='#7CD37C'><b>{}</b></span>",
-                            "today": "<span color='#ffcc66'><b>{}</b></span>"
-                }
-            }
-
-        },   
- "cpu": {
-        "interval": 5,
-          "format": "  {usage}%",
-},
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
     "memory": {
-         "interval": 5,
-        "format": " {}%"
-  },
+        "format": "{}% "
+    },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -141,16 +130,19 @@
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
- "battery": {
+    "battery": {
         "states": {
+            // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-full": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
@@ -167,26 +159,22 @@
         "power-saver": ""
       }
     },
-  "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
-                "tooltip": true,
-                "rotate": 0,
-                "format-ethernet": " ",
-                "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>",
-                "format-linked": " {ifname} (No IP)",
-                "format-disconnected": "󰖪 ",
-                "tooltip-format-disconnected": "Disconnected",
-                "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-                "interval": 2
-},
-
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",

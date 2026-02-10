@@ -1,0 +1,13 @@
+{
+
+"suggest.maxCompleteItemCount": 10
+"suggest.floatConfig": {
+    "maxWidth": 50,
+    "maxHeight": 12,
+  
+
+
+  {:
+  "suggest.detailField": "abbr",       // 仅显示缩写，不显示冗长的详细定义
+  "suggest.labelMaxLength": 30,       // 限制标签最大长度
+}

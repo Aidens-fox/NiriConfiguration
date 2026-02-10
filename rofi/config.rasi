@@ -1,2 +1,10 @@
+configuration {
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+    show-icons:     true;
+}
 
-@theme "/home/uxtk/.config/rofi/themes/rounded-gray-dark.rasi"
+@theme "~/.config/rofi/gruvbox-material.rasi"

@@ -1,42 +1,42 @@
- window-rule {
-    match  app-id=".*"
-    opacity 0.85
+prefer-no-csd
+environment {  
+	LANG "zh_CN.UTF-8"
+    LC_CTYPE "en_US.UTF-8"
+   QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    QT_IM_MODULE "fcitx"
+    XMODIFIERS "@im=fcitx"
+    GTK_IM_MODULE "fcitx"
+    SDL_IM_MODULE "fcitx"
+    XDG_SESSION_TYPE "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+    SDL_VIDEODRIVER "wayland,x11"
+    GODEBUG "netdns=go"
+   EDITOR "nvim"
 }
-spawn-sh-at-startup  "waybar --config .config/waybar/top/config.jsonc &"
-spawn-at-startup "/usr/bin/swww-daemon"
-spawn-at-startup "swww" "img" "~/home/uxtk/壁纸/22.jpg"
-spawn-sh-at-startup "swaybg -i  /home/uxtk/壁纸/22.jpg -m fill"
-    prefer-no-csd
-cursor {
-    xcursor-size 20
-    hide-when-typing
-}
- input {
-    keyboard {
-    }
+input {
     touchpad {
         tap
         natural-scroll
          accel-speed 0.2
          scroll-method "two-finger"
     }
-     warp-mouse-to-focus
+         warp-mouse-to-focus
      focus-follows-mouse max-scroll-amount="95%"
 }
-/-output "eDP-1" {
-    mode "1920x1080@120.030"
-    scale 1.5
+output "eDP-1" {
+    mode "1920x1080@60.001"
+    scale 1
     transform "normal"
-   position x=1280 y=0
+    position x=1280 y=0
 }
-
 layout {
-    gaps 0.5
+    gaps 0
     center-focused-column "never"
     preset-column-widths {
-        proportion 0.2
-        proportion 0.2
-        proportion 0.2
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
     }
     default-column-width { proportion 0.5; }
     focus-ring {
@@ -44,18 +44,13 @@ layout {
         active-color "#7fc8ff"
         inactive-color "#505050"
     }
-
     border {
-      //  off
-
         width 1
         active-color "#ffc87f"
         inactive-color "#505050"
-
         urgent-color "#9b0000"
-
     }
-
+   
     shadow {
         softness 20
         spread 5
@@ -63,136 +58,68 @@ layout {
         color "#0007"
     }
     struts {
-         left 2
-         right 2
-         top 2
-         bottom 2
+         left 1
+         right 1
+         top 1
+         bottom 1
     }
 }
 spawn-at-startup "waybar"
+spawn-at-startup "swaybg" "-m" "fill" "-i"  "壁纸/Arch-Linux.png" 
+spawn-at-startup "conky" "-c" ".config/conky/desktop.conf"
 hotkey-overlay {
      skip-at-startup
 }
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
-animations {
-    workspace-switch {
-        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
-    }
-
-    window-open {
-        duration-ms 150
-        curve "ease-out-expo"
-    }
-
-    window-close {
-        duration-ms 150
-        curve "ease-out-quad"
-    }
-
-    horizontal-view-movement {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
-
-    window-movement {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
-
-    window-resize {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
-
-    config-notification-open-close {
-        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
-    }
-
-    exit-confirmation-open-close {
-        spring damping-ratio=0.6 stiffness=500 epsilon=0.01
-    }
-
-    screenshot-ui-open {
-        duration-ms 200
-        curve "ease-out-quad"
-    }
-
-    overview-open-close {
-        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
-    }
-}
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
 }
-
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
-
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
     block-out-from "screen-capture"
-
 }
-/-window-rule {
-    geometry-corner-radius 10
-    clip-to-geometry true
-}
-/-window-rule {
-    match app-id=".*"
-
-    opacity 0.7
-}
-window-rule {
-    match app-id=r#"^com\.obsproject\.Studio$"#
-
-    min-width 876
-}
-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
-}
-window-rule {
-    // 通过 "dropdown" 应用 ID 匹配。
-    // 你需要在运行终端时设置此应用 ID，例如：
-    // spawn "alacritty" "--class" "dropdown"
-    match app-id="^dropdown$"
-
-    open-floating true
-    // 锚定到屏幕的上边缘。
-    default-floating-position x=0 y=0 relative-to="top"
-    // 屏幕高度的一半。
-    default-window-height { proportion 0.5; }
-    // 屏幕宽度的 80%。
-    default-column-width { proportion 0.8; }
-}
-
 window-rule {
     match app-id=r#"wechat"#
     open-focused false//解决搜索框失去焦点问题
 }
+/-window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+ Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+Shift+C hotkey-overlay-title="重启waybar" { spawn-sh "pkill waybar && waybar"; }
- Mod+Shift+B hotkey-overlay-title="重启waybartop" { spawn-sh  " waybar --config .config/waybar/top/config.jsonc &"; }
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+     Mod+B hotkey-overlay-title="开关机" { spawn-sh "nwg-bar"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-   // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-   // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-XF86MonBrightnessUp     allow-when-locked=true { spawn "light" "-A" "10"; }
-XF86MonBrightnessDown   allow-when-locked=true { spawn "light" "-U" "10"; }
 
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     Mod+O repeat=false { toggle-overview; }
+
     Mod+Q repeat=false { close-window; }
+
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
@@ -235,6 +162,7 @@ XF86MonBrightnessDown   allow-when-locked=true { spawn "light" "-U" "10"; }
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
+
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
     Mod+U              { focus-workspace-down; }
@@ -243,6 +171,7 @@ XF86MonBrightnessDown   allow-when-locked=true { spawn "light" "-U" "10"; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
     Mod+Ctrl+I         { move-column-to-workspace-up; }
+
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
@@ -309,59 +238,13 @@ XF86MonBrightnessDown   allow-when-locked=true { spawn "light" "-U" "10"; }
 
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-
     Mod+W { toggle-column-tabbed-display; }
 
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
-
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
-
     Mod+Shift+P { power-off-monitors; }
-
-
-}
-
-environment {
-    QT_QPA_PLATFORM "wayland"
-    QT_QPA_PLATFORMTHEME "qt6ct"
-    XDG_MENU_PREFIX "arch-"
-    QT_IM_MODULE "fcitx"
-    XMODIFIERS "@im=fcitx"
-    GTK_IM_MODULE "fcitx"
-    SDL_IM_MODULE "fcitx"
-    XDG_SESSION_TYPE "wayland"
-    XDG_CURRENT_DESKTOP "niri"
-    SDL_VIDEODRIVER "wayland,x11"
-    GODEBUG "netdns=go"
-}
-
-layer-rule {
-    match namespace="^swww-daemon$"
-    place-within-backdrop true
-    // opacity 0.75
-}
-layer-rule {
-    match namespace="^quickshell-overview$"
-    place-within-backdrop true
-}
-layer-rule {
-    match namespace="^launcher$"
-
-    shadow {
-        on
-    }
-
-    // Fuzzel 默认设置为 10 像素圆角。
-    geometry-corner-radius 20
-}
-
-gestures {
-    hot-corners {
-        off
-    }
 }
