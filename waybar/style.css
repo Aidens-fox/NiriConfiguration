@@ -1,71 +1,66 @@
+/*本waybar配置基于Bilibili@夜未央-天将亮(https://space.bilibili.com/517516711?spm_id_from=333.1387.follow.user_card.click)
+原waybar配置：https://github.com/cap153/config/tree/main/niri/.config/waybar*/
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 19px;
+}
+
+#taskbar button {
+    color: #ebdbb2;           
+    border-radius: 0px;      
+    transition: all 0.3s ease; /* 让颜色切换更丝滑 */
+     padding: 0 10px;  
+}
+
+#taskbar button:hover {
+    background-color: rgba(49, 50, 68, 0.6);
+}
+
+#taskbar button.active {
+    background-color: rgba(88, 91, 112, 0.6);
+}
+
+#taskbar button.active:hover {
+    background-color: rgba(108, 112, 134, 0.6);
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.0);
-    border-bottom: 0px solid rgba(100, 114, 125, 0.3);
-    color: #ebdbb2;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background: rgba(40, 40, 40, 0.5);
+    border-bottom: 0px solid rgba(100, 114, 125, 0.0);
 }
 
 window#waybar.hidden {
-    opacity: 0.1;
+    opacity: 0.2;
 }
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
 
 window#waybar.termite {
     background-color: #3F3F3F;
 }
 
 window#waybar.chromium {
-    background-color: #ebdbb2;
+    background-color: #000000;
     border: none;
-}
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 0px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 0px #ebdbb2;
-}
-
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #282828;
 }
 
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
     color: #ebdbb2;
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each workspace name */
+    border: none;
+    border-radius: 0;
 }
 
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background-color: rgba(49, 50, 68, 0.6);
 }
 
-#workspaces button.focused, #workspaces button.active {
-    background-color: #282828;
-    box-shadow: inset 0 0px #ebdbb2;
+#workspaces button.focused {
+    background-color: rgba(88, 91, 112, 0.6);
 }
 
 #workspaces button.urgent {
@@ -74,7 +69,7 @@ button:hover {
 
 #mode {
     background-color: #64727D;
-    box-shadow: inset 0 0px #ebdbb2;
+    border-bottom: 3px solid #ebdbb2;
 }
 
 #clock,
@@ -91,16 +86,14 @@ button:hover {
 #tray,
 #mode,
 #idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
 #mpd {
-    padding: 0 10px;
+    padding: 0 5px;
     color: #ebdbb2;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    margin: 0 6px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -108,109 +101,49 @@ button:hover {
     margin-left: 0;
 }
 
+
+
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
 
-#clock {
-    background-color: #282828;
-}
-
-#battery {
-    background-color: #282828;
-    color: #ebdbb2;
-}
-
-#battery.charging, #battery.plugged {
-    color: #ebdbb2;
-    background-color: #26A65B;
-}
 
 @keyframes blink {
     to {
-        background-color: #282828;
-        color: #ebdbb2;
+        background-color: #ebdbb2;
+        color: #000000;
     }
 }
 
-/* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #282828;
+    background-color: #f53c3c;
     color: #ebdbb2;
     animation-name: blink;
     animation-duration: 0.5s;
-    animation-timing-function: steps(12);
+    animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-    background-color: #282828;
-    color: #ebdbb2;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: #282828;
-    color: #ebdbb2;
-}
-
-#power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #ebdbb2;
-}
-
 label:focus {
-    background-color: #ebdbb2;
+    background-color: #000000;
 }
 
-#cpu {
-    background-color: #282828;
-    color: #ebdbb2;
-}
-
-#memory {
-    background-color: #282828;
-}
-
-#disk {
-    background-color: #964B00;
-}
 
 #backlight {
-    background-color: #282828;
+    background-color: transparent;
 }
 
-#network {
-    background-color: #282828;
+#wireplumber {
+   background-color: transparent;
+   	
 }
 
 #network.disconnected {
     background-color: #f53c3c;
 }
 
-#pulseaudio {
-    background-color: #282828;
-    color: #ebdbb2;
-}
-
-#pulseaudio.muted {
-    background-color: #282828;
-    color: #2a5c45;
-}
-
-#wireplumber {
-    background-color: #282828;
-    color: #ebdbb2;
-}
-
-#wireplumber.muted {
-    background-color: #f53c3c;
-}
 
 #custom-media {
     background-color: #66cc99;
@@ -227,16 +160,13 @@ label:focus {
 }
 
 #temperature {
-    background-color: #282828;
+    background-color: #f0932b;
 }
 
 #temperature.critical {
     background-color: #eb4d4b;
 }
 
-#tray {
-    background-color: #282828;
-}
 
 #tray > .passive {
     -gtk-icon-effect: dim;
@@ -245,6 +175,7 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
+     color: #ebdbb2;
 }
 
 #idle_inhibitor {
@@ -283,7 +214,7 @@ label:focus {
 
 #keyboard-state {
     background: #97e1ad;
-    color: #ebdbb2;
+    color: #000000;
     padding: 0 0px;
     margin: 0 5px;
     min-width: 16px;
@@ -295,33 +226,4 @@ label:focus {
 
 #keyboard-state > label.locked {
     background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
-}
-
-#privacy {
-    padding: 0;
-}
-
-#privacy-item {
-    padding: 0 5px;
-    color: white;
-}
-
-#privacy-item.screenshare {
-    background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-    background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-    background-color: #0069d4;
 }

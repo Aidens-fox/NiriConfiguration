@@ -1,7 +1,7 @@
 [font]
-normal = { family = "WenQuanYi Zen Hei Mono", style = "Bold" }
-bold = { family = "WenQuanYi Zen Hei Mono", style = "Bold" }
-italic = { family = "WenQuanYi Zen Hei Mono", style = "Bold" }
+normal = { family = "Sarasa Mono SC" }
+bold = { family = "Sarasa Mono SC" }
+italic = { family = "Sarasa Mono SC" }
 size = 20.0
 # Colors (Gruvbox dark)
 
