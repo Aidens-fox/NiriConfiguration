@@ -14,6 +14,13 @@ environment {
     GODEBUG "netdns=go"
    EDITOR "nvim"
 }
+
+cursor {
+    xcursor-theme "Moga-Neon-Sandy"
+    xcursor-size 35
+    hide-when-typing
+}
+
 input {
     touchpad {
         tap
@@ -138,7 +145,7 @@ binds {
     Mod+Ctrl+K     { move-window-up; }
     Mod+Ctrl+L     { move-column-right; }
 
-
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }    
     Mod+Home { focus-column-first; }
     Mod+End  { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
@@ -243,7 +250,6 @@ binds {
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
     Mod+Shift+P { power-off-monitors; }
