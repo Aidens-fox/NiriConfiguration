@@ -27,6 +27,22 @@ waybar也是采用Gruvbox配色方案，基于b站up主:夜未央-天将亮
 
 `sudo pacman -S ttf-sarasa-gothic noto-fonts-emoji noto-fonts noto-fonts-cjk`
 
+你需要安装的软件
+`sudo pacman -S  wlsunset foot brightnessctl swaybg conky waybar`
+
+wlsunset:护眼模式需要
+
+foot:配置默认终端
+
+brightnessctl:亮度调节
+
+swaybg:设置壁纸需要
+
+conky:桌面挂件需要
+
+waybar：状态栏
+
+
 
 
 
