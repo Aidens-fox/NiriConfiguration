@@ -27,7 +27,7 @@ waybar也是采用Gruvbox配色方案，基于b站up主:夜未央-天将亮
 
 `sudo pacman -S ttf-sarasa-gothic noto-fonts-emoji noto-fonts noto-fonts-cjk`
 
-你需要安装的软件
+- 你需要安装的软件
 `sudo pacman -S  wlsunset foot brightnessctl swaybg conky waybar`
 
 wlsunset:护眼模式需要
@@ -41,6 +41,20 @@ swaybg:设置壁纸需要
 conky:桌面挂件需要
 
 waybar：状态栏
+
+- 主要添加的快捷键
+
+Mod+Return(回车键) : 打开终端
+
+Mod+B : 隐藏显示waybar
+
+Mod+M : 开关机模块
+
+Mod+Z : 打开护眼模式
+
+Mod+A : 关闭护眼模式
+
+Mod+Shift+C : 刷新waybar
 
 
 
