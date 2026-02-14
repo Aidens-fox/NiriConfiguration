@@ -1,8 +1,6 @@
 # NiriConfiguration
 Niri配置分享
-
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cb195545-fc31-47e6-9675-7ac6c101b034" />
-
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/85fe367a-1217-49b6-862a-3859089fb12f" />
 ### 本配置采用Gruvbox配色方案，色调柔和 
 
 - 鼠标主题：Moga Neon
