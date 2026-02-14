@@ -18,11 +18,11 @@
 }
 
 #taskbar button.active {
-    background-color: rgba(88, 91, 112, 0.6);
+    background-color: rgba(91, 98, 62, 0.4);
 }
 
 #taskbar button.active:hover {
-    background-color: rgba(108, 112, 134, 0.6);
+    background-color: rgba(91, 98, 62, 0.3);
 }
 
 window#waybar {
@@ -35,32 +35,28 @@ window#waybar.hidden {
 }
 
 window#waybar.termite {
-    background-color: #3F3F3F;
+    background-color: #282828;
 }
 
 window#waybar.chromium {
-    background-color: #000000;
+    background-color: #282828;
     border: none;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
+    padding: 0 8px;
     color: #ebdbb2;
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each workspace name */
     border: none;
     border-radius: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background-color: rgba(49, 50, 68, 0.6);
+    background-color: rgba(49, 50, 68, 0.8);
 }
 
 #workspaces button.focused {
-    background-color: rgba(88, 91, 112, 0.6);
+    background-color: 	#5b623e;
 }
 
 #workspaces button.urgent {
