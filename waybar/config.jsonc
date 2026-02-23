@@ -1,3 +1,4 @@
+
 //本waybar配置基于Bilibili@夜未央-天将亮(https://space.bilibili.com/517516711?spm_id_from=333.1387.follow.user_card.click)
 //原waybar配置：https://github.com/cap153/config/tree/main/niri/.config/waybar
 //可能要安装字体noto-fonts-emoji
@@ -8,7 +9,7 @@
 	// "width": 1366,
 	"modules-left":  ["niri/workspaces"],
 	"modules-center": ["wlr/taskbar"], 
-	"modules-right": ["backlight","pulseaudio", "network", "cpu", "memory", "battery", "clock", "tray"],
+	"modules-right": ["backlight","pulseaudio", "network", "cpu", "memory","disk","battery", "clock", "tray"],
 	"wlr/taskbar": {
 			"format": "{icon}",
 			"tooltip-format": "{title} | {app_id}",
@@ -30,7 +31,7 @@
 			}
 	},
 	"disk":{
-			"format": "󰉉  {percentage_free}%",
+			"format": "󰉉 {percentage_free}%",
 	},
 	 "backlight": {
         // "device": "acpi_video1",
@@ -46,38 +47,38 @@
 			"spacing": 10
 	},
 	"clock": {
-			"format": "  {:%Y-%m-%d 󰅐  %H:%M:%S}",
+			"format": " {:%Y-%m-%d󰅐 %H:%M:%S}",
 			"interval": 1,
 			        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
 
 	},
 	"cpu": {
-			"format": "󰻠  {usage}%"
+			"format": " {usage}%"
 	},
 	// 
 	"memory": {
-			"format": "  {}%"
+			"format": " {}%"
 	},
 	"battery": {
 		"states": {
 			"warning": 20,
 			"critical": 10
 		},
-		"format": "<span color='#b8bb26'>{icon}</span>   {capacity}%",
-		"format-charging": "<span color='#e88939'> </span> {capacity}%",
-		"format-plugged":  "<span color='#e88939'>{icon}  </span>   {capacity}%",
-		"format-discharging": "<span color='#e88939'>{icon}</span>   {capacity}%",
+		"format": "<span color='#b8bb26'>{icon}</span> {capacity}%",
+		"format-charging": "<span color='#e88939'> </span>{capacity}%",
+		"format-plugged":  "<span color='#e88939'>{icon}  </span>{capacity}%",
+		"format-discharging": "<span color='#e88939'>{icon}</span> {capacity}%",
 		"format-icons": ["", "", "", "", ""]
 	},
 	"network": {
 			// "interface": "wlp2s0",
-			"format-wifi": "   {signalStrength}%",
+			"format-wifi": "  {signalStrength}%",
 			"format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
 			"format-disconnected": "⚠ Disconnected ",
 	},
 	"pulseaudio": {
-			"format": "{icon}  {volume}%   ",
-			"format-muted": "  ",
+			"format": "{icon} {volume}%",
+			"format-muted": "",
 			"on-click": "pwvucontrol",
 			"format-icons": ["", " "],
       "on-click": "pavucontrol"

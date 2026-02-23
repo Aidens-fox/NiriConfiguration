@@ -2,7 +2,7 @@
 原waybar配置：https://github.com/cap153/config/tree/main/niri/.config/waybar*/
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family:Sarasa Mono SC, JetBrainsMono Nerd Font;
     font-size: 19px;
 }
 

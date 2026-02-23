@@ -1,3 +1,10 @@
+spawn-at-startup "swww-daemon"
+spawn-at-startup "sh" "-c" "sleep 0.5 && swww img  壁纸/Arch-Linux.png.jpg"
+
+layer-rule {
+    match namespace="^swww-daemon$"
+    place-within-backdrop true
+}
 prefer-no-csd
 environment {  
 	LANG "zh_CN.UTF-8"
