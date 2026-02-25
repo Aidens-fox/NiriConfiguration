@@ -3,7 +3,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family:Sarasa Mono SC, JetBrainsMono Nerd Font;
-    font-size: 19px;
+    font-size: 20px;
 }
 
 #taskbar button {
@@ -18,11 +18,11 @@
 }
 
 #taskbar button.active {
-    background-color: rgba(91, 98, 62, 0.4);
+    background-color: rgba(91, 98, 62, 0.5);
 }
 
 #taskbar button.active:hover {
-    background-color: rgba(91, 98, 62, 0.3);
+    background-color: rgba(91, 98, 62, 0.5);
 }
 
 window#waybar {
@@ -49,6 +49,10 @@ window#waybar.chromium {
     border: none;
     border-radius: 0;
 }
+
+#window {
+	    color: #ebdbb2;  /* 设置为你想要的颜色，例如白色 */
+	    }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {

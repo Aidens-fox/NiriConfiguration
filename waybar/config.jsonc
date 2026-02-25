@@ -5,18 +5,21 @@
 {
 	"layer": "top",
 	"position": "bottom",
-	"height": 34,
+	"height": 30,
 	// "width": 1366,
-	"modules-left":  ["niri/workspaces"],
+	"modules-left":  ["niri/workspaces", "niri/window" ],
 	"modules-center": ["wlr/taskbar"], 
 	"modules-right": ["backlight","pulseaudio", "network", "cpu", "memory","disk","battery", "clock", "tray"],
 	"wlr/taskbar": {
-			"format": "{icon}",
+			"format": "{icon}",		
+                        "icon-size": 25,
 			"tooltip-format": "{title} | {app_id}",
 			"on-click": "activate",
 			"on-click-middle": "close",
 			"on-click-right": "fullscreen"
 	},
+	
+	
 	"niri/workspaces": {
 			"disable-scroll": true,
 			"all-outputs": false,
@@ -43,11 +46,11 @@
 			"format": "<span style=\"italic\">{}</span>"
 	},
 	"tray": {
-			// "icon-size": 21,
+		//	"icon-size": 20,
 			"spacing": 10
 	},
 	"clock": {
-			"format": " {:%Y-%m-%d󰅐 %H:%M:%S}",
+			"format": "󰔠 {:%Y-%m-%d 󱑂 %H:%M:%S}",
 			"interval": 1,
 			        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
 
@@ -56,12 +59,22 @@
 			"format": " {usage}%"
 	},
 	// 
+	
+
+        "niri/window": {
+		    "format": "{}",
+		        "max-length": 20,
+			    "truncate": "...",
+			        "separate-outputs": true,
+	},
+
+
 	"memory": {
 			"format": " {}%"
 	},
 	"battery": {
 		"states": {
-			"warning": 20,
+			"warning": 18,
 			"critical": 10
 		},
 		"format": "<span color='#b8bb26'>{icon}</span> {capacity}%",
@@ -76,16 +89,13 @@
 			"format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
 			"format-disconnected": "⚠ Disconnected ",
 	},
-	"pulseaudio": {
-			"format": "{icon} {volume}%",
-			"format-muted": "",
-			"on-click": "pwvucontrol",
-			"format-icons": ["", " "],
-      "on-click": "pavucontrol"
-	},
-	"bluetooth": {
-		"format": " {status}  ",
-		"format-connected-battery": " {device_battery_percentage}%  ",
-		"on-click": "blueberry"
-	}
+      "pulseaudio": {
+	              "format": "{icon} {volume}%",
+		              "format-muted": " ",
+			              "on-click": "pavucontrol", 
+				              "format-icons": ["", " "]
+					          }, 
+
+
+
 }
