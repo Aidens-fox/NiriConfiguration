@@ -7,9 +7,9 @@ Niri配置分享
 
 https://www.gnome-look.org/p/2302110
 
-- gtk主题：arc-gruvbox-theme
+- gtk主题：gruvbox-gtk-theme
 
-`yay -S gtk-theme-arc-gruvbox-git`
+`yay -S gruvbox-gtk-theme-git`
 
 - nvim主题:gruvbox.nvim
 
