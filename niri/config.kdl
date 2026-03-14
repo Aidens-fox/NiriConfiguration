@@ -4,12 +4,12 @@ environment {
     LC_CTYPE "en_US.UTF-8"
    QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt6ct"
-    QT_IM_MODULE "fcitx"
     XMODIFIERS "@im=fcitx"
     SDL_IM_MODULE "fcitx"
     XDG_SESSION_TYPE "wayland"
     XDG_CURRENT_DESKTOP "niri"
     SDL_VIDEODRIVER "wayland,x11"
+ELECTRON_OZONE_PLATFORM_HINT "auto"
     GODEBUG "netdns=go"
    EDITOR "nvim"
 }
@@ -57,6 +57,7 @@ layout {
         urgent-color "#9b0000"
     }
    
+
     shadow {
         softness 20
         spread 5
@@ -72,7 +73,6 @@ layout {
 }
 spawn-at-startup "waybar"
 spawn-at-startup "swaybg" "-m" "fill" "-i"  "壁纸/Arch-Linux.png" 
-spawn-at-startup "conky" "-c" ".config/conky/desktop.conf"
 hotkey-overlay {
      skip-at-startup
 }
@@ -85,15 +85,25 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
+
 /-window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
     block-out-from "screen-capture"
 }
+
 window-rule {
     match app-id=r#"wechat"#
     open-focused false//解决搜索框失去焦点问题
 }
+window-rule {
+    match is-active=false
+    opacity 0.5
+}
+window-rule {
+	    // 强制不让边框背景透过透明窗口显示
+	        draw-border-with-background false
+	}
 /-window-rule {
     geometry-corner-radius 12
    clip-to-geometry true
@@ -104,9 +114,11 @@ binds {
  Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-      Mod+B { spawn "pkill" "-USR1" "waybar"; }
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-    Mod+Shift+C hotkey-overlay-title="重启waybar" { spawn-sh "pkill waybar && waybar"; }
+      Mod+B { spawn-sh "pkill -USR1 waybar"; }
+      Mod+S { spawn-sh "nautilus --new-window"; }
+      Mod+X { spawn-sh "firefox"; }
+      Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    Mod+Shift+C hotkey-overlay-title="重启waybar" { spawn-sh "pkill waybar; waybar &"; }
      Mod+M hotkey-overlay-title="开关机" { spawn-sh "nwg-bar"; }
      Mod+Z hotkey-overlay-title="打开护眼模式" { spawn-sh "wlsunset -t 4000"; }
      Mod+A hotkey-overlay-title="关闭护眼模式" { spawn-sh " pkill wlsunset"; }
