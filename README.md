@@ -1,6 +1,7 @@
 # NiriConfiguration
 Niri配置分享
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0e5b3fdc-e805-4041-b0f1-f62c2d163553" />
+<img width="1915" height="1078" alt="image" src="https://github.com/user-attachments/assets/25aac527-2605-44d6-bb03-24f9e1da1c48" />
+
 ### 本配置采用Gruvbox配色方案，色调柔和 
 
 - 鼠标主题：Moga Neon
@@ -56,7 +57,9 @@ Mod+A : 关闭护眼模式
 
 Mod+Shift+C : 刷新waybar
 
+Mod+X : 打开firefox
 
+Mod+S : 打开文件管理器
 
 
 
