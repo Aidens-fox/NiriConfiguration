@@ -4,14 +4,20 @@ environment {
     LC_CTYPE "en_US.UTF-8"
    QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt6ct"
+ MOZ_ENABLE_WAYLAND "1"
+    _JAVA_AWT_WM_NONREPARENTING "1"
+    CLUTTER_BACKEND "wayland"    
     XMODIFIERS "@im=fcitx"
     SDL_IM_MODULE "fcitx"
     XDG_SESSION_TYPE "wayland"
     XDG_CURRENT_DESKTOP "niri"
-    SDL_VIDEODRIVER "wayland,x11"
-ELECTRON_OZONE_PLATFORM_HINT "auto"
+    SDL_VIDEODRIVER "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    GDK_BACKEND "wayland"
     GODEBUG "netdns=go"
-   EDITOR "nvim"
+    MOZ_ENABLE_WAYLAND "1"
+    LIBVA_DRIVER_NAME "iHD"
+    EDITOR "nvim"
 }
 
 cursor {
@@ -56,7 +62,6 @@ layout {
         inactive-color "#505050"
         urgent-color "#9b0000"
     }
-   
 
     shadow {
         softness 20
