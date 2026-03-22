@@ -103,7 +103,7 @@ window-rule {
 }
 window-rule {
     match is-active=false
-    opacity 0.5
+    opacity 0.9
 }
 window-rule {
 	    // 强制不让边框背景透过透明窗口显示
