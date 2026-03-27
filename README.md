@@ -31,7 +31,7 @@ waybar也是采用Gruvbox配色方案，基于b站up主:夜未央-天将亮
 `yay -S fcitx5-gruvbox-dark-theme-git`
 
 - 你需要安装的软件
-`sudo pacman -S  wlsunset foot brightnessctl swaybg  waybar`
+`sudo pacman -S  wlsunset foot brightnessctl swaybg  waybar rofi`
 
 wlsunset:护眼模式需要
 
@@ -40,6 +40,8 @@ foot:配置默认终端
 brightnessctl:亮度调节
 
 swaybg:设置壁纸需要
+
+rofi:软件启动器
 
 waybar：状态栏
 
